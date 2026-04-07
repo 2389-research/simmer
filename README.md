@@ -2,7 +2,7 @@
 
 You wrote a prompt. It works. But is it *good*? Simmer runs your artifact through multiple rounds of criteria-driven refinement — each round, a panel of judges reads your code, understands the problem, and proposes specific improvements.
 
-[Read the story behind Simmer →](https://2389.ai/blog/simmer)
+[Read the story behind Simmer →](https://2389.ai/posts/simmer-skill/)
 
 Iterative artifact refinement — take any artifact or workspace and hone it over multiple rounds using criteria-driven feedback.
 
