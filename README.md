@@ -5,6 +5,7 @@ Iterative artifact refinement — take any artifact or workspace and hone it ove
 ## Installation
 
 ```bash
+/plugin marketplace add 2389-research/claude-plugins
 /plugin install simmer@2389-research
 ```
 
