@@ -1,5 +1,9 @@
 # Simmer
 
+You wrote a prompt. It works. But is it *good*? Simmer runs your artifact through multiple rounds of criteria-driven refinement — each round, a panel of judges reads your code, understands the problem, and proposes specific improvements.
+
+[Read the story behind Simmer →](https://2389.ai/blog/simmer)
+
 Iterative artifact refinement — take any artifact or workspace and hone it over multiple rounds using criteria-driven feedback.
 
 ## Installation
@@ -190,3 +194,9 @@ Part of the test-kitchen family, but independently installable:
 - [Simmer skill](./skills/SKILL.md) — orchestrator
 - [v2 Design](./docs/specs/2026-03-16-simmer-v2-design.md) — design spec
 - [Integration tests](./tests/integration/simmer-scenario.md) — test scenarios
+
+---
+
+If Simmer helped you ship something better than your first draft, a ⭐ helps us know it's landing.
+
+Built by [2389](https://2389.ai) · Part of the [Claude Code plugin marketplace](https://github.com/2389-research/claude-plugins)
