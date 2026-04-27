@@ -1,0 +1,40 @@
+{
+  "criteria": ["atmospheric_density", "dm_runnable_clarity", "player_agency"],
+  "members": [
+    {
+      "id": "iter-3",
+      "candidate_path": "/Users/michaelsugimura/Documents/GitHub/simmer/docs/simmer/vampire-arm-b-frontier/iteration-3-candidate.md",
+      "judgment_path": "/Users/michaelsugimura/Documents/GitHub/simmer/docs/simmer/vampire-arm-b-frontier/iteration-3-judgment.md",
+      "scores": {
+        "atmospheric_density": 9,
+        "dm_runnable_clarity": 10,
+        "player_agency": 9
+      },
+      "best_at": ["atmospheric_density", "dm_runnable_clarity", "player_agency"],
+      "key_passages": [
+        {
+          "criterion": "atmospheric_density",
+          "excerpt": "*The bannister is carved with hunting hounds. Each hound's eyes have been gouged out. The carpet is the color old blood becomes when it has been a long time becoming. The whole stairwell is colder than the rooms on either side — breath hangs visible — and somewhere below, water drips into water at a steady, patient interval. Halfway up the bannister, in the dust, there is a child's handprint at adult shoulder height. It is fresh.*  ...  *One closed coffin's lid has been opened and shut so many times that the wood is worn smooth in two places where a hand has gripped it.*",
+          "judge_evidence": "Area 5 now carries the \"child's handprint at adult shoulder height. It is fresh\" — a single image that does more Gothic work than any number of additional sentences could: it tells the party Mira walked here recently, that something carried her, and that the manor remembers. Area 7 picks up \"One closed coffin's lid has been opened and shut so many times that the wood is worn smooth in two places where a hand has gripped it\" — again a single concrete image that doubles as an investigation tell (it's hers, no roll needed) and as a portrait of nineteen years of nightly ritual."
+        },
+        {
+          "criterion": "dm_runnable_clarity",
+          "excerpt": "> ### DM COMBAT REFERENCE CARD — read this first\n>\n> **VESKA (Widow of Hallowmere) — vampire spawn variant, CR 5**\n> - **AC 15 · HP 82 · Speed 30 ft. / climb 30 ft. (Spider Climb)**\n> - **Multiattack:** 2 attacks, only one a Bite. Standard opener: **Unarmed Strike to grapple (escape DC 13), then Bite the grappled target.**\n> - **Unarmed Strike:** +6 to hit, 1d8+3 bludg., or grapple (DC 13).\n> - **Bite** (vs. willing/grappled/incapacitated/restrained): +6 to hit, 1d6+3 pierc. + 2d6 necrotic; reduces target's HP max, heals her for the necrotic dealt.\n> - **Lullaby (Reaction, Recharge 5-6):** target within 30 ft. that can hear her, **DC 13 Wis save** or *charmed* until end of its next turn. Open with this on the heaviest armor.\n> - **Regeneration:** +10 hp at start of her turn unless in sunlight, running water, **or hit by radiant / holy water last round** (any of those switches it off for one turn).\n> - **Saves:** Dex +6, Wis +3. **Resistances:** necrotic; nonmagical bludg/pierc/slash.\n> - **Flee trigger:** at **HP 25 or below**, she breaks for the servants' tunnels (Area 5 wall / Area 7 wine racks) toward her coffin. A party watching either door cuts her off; otherwise she escapes — sequel.\n>\n> **THE FOUR ENDINGS (decision tree)**  [ASCII tree branching coffin/day → Solar → Chapel → Bargain]\n\n## Timing Convention (read once, use throughout)\n\n**Out of combat, count time in 10-minute exploration turns.** Each room visited, each search, each ritual prep is one turn unless stated otherwise. The Widow's Awareness Track (Area 2) ticks in turns.\n\n**Once Veska \"comes herself\" — switch to rounds.** From that moment forward, count combat rounds normally until she falls or flees.",
+          "judge_evidence": "The DM Combat Reference Card pulled to the front of the Climax section is exactly the artifact the prior ASI prescribed: Veska's key numbers (AC 15, HP 82, Multiattack with grapple-then-bite opener, Lullaby DC 13 Wis save, Regeneration's three shutoff conditions including the \"hit by radiant/holy water last round\" trigger, flee at HP 25 via tunnels in Areas 5/7) appear above the prose, and the four endings are rendered as an actual ASCII decision tree branching on coffin/day → solar → chapel → bargain. A DM running the final fight cold has every number and every branching choice in eye-line without page-flipping. The new \"Timing Convention\" section commits to 10-minute exploration turns with an explicit handoff to combat rounds at \"comes herself\" — the live-table structural decision flagged in iteration 2 is now removed."
+        },
+        {
+          "criterion": "player_agency",
+          "excerpt": "She does not fight to the death — at 25 hp she attempts to flee to her coffin via the **servants' tunnels** seeded in Areas 5 and 7. A party that found and watched either door cuts off the escape; a party that ignored both lets her slip away, setting up a sequel.",
+          "judge_evidence": "The six rumors, two routes, four-plus-one solution paths, three NPC-driven endings, the Mira moral pivot, and the seeded servants' tunnels (which let a thorough party intercept Veska's escape) all carry forward unchanged. The decision tree in the new combat reference card is a presentation improvement, not an agency expansion — it makes the existing branches more legible to the DM but does not add new branches. The committed timing convention slightly tightens the consequence loop on party tempo (a stealthy party gets more turns; a loud one triggers her sooner), which is a marginal positive."
+        }
+      ],
+      "weaknesses": [
+        {
+          "criterion": "atmospheric_density",
+          "judge_evidence": "It does not climb to 10 because the new images, while excellent, are still calibrated to match the existing top-tier rooms rather than to introduce a new register — the module's Gothic vocabulary is now fully even, but it is the same vocabulary throughout. A 10 would require something genuinely strange: a sensory beat that doesn't belong to the established palette (a sound the party knows shouldn't exist, a moment of dream-logic). The current artifact is uniformly excellent rather than occasionally astonishing."
+        }
+      ],
+      "added_at_iteration": 3
+    }
+  ]
+}

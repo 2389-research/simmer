@@ -41,6 +41,7 @@ Iterative refinement loop — take an artifact (single file or workspace) and ho
 │  1. Dispatch generator subagent     │
 │  2. Run evaluator (if present)      │
 │  3. Dispatch judge subagent         │
+│  3.5 Pareto frontier (if opted in)  │
 │  4. Load reflect subskill           │
 │                                     │
 │  Generator gets: candidate + ASI    │
@@ -116,6 +117,7 @@ VALIDATION_COMMAND: [quick check command — omit if no cheap validation exists]
 SEARCH_SPACE: [what's in scope to explore — omit if unconstrained]
 JUDGE_MODE: [single | board — auto-selected by setup based on complexity. User can override]
 JUDGE_PANEL: [optional custom judge definitions — omit to use defaults for problem class]
+FRONTIER_MODE: [on | off — default off. Opt-in only. Turns on cross-iteration Pareto frontier tracking. Useful for tasks with criteria that genuinely trade off (architecture, schema, DSL design). Skip for aligned-criteria tasks (most prompt/creative work) — adds overhead without benefit.]
 ITERATIONS: [N]
 MODE: [seedless | from-file | from-paste | from-workspace]
 OUTPUT_DIR: [path, default: docs/simmer]
@@ -324,11 +326,34 @@ an evidence-based direction. You may research approaches if the current
 path is stuck.
 ```
 
+**Step 3.5: Pareto Frontier (only if `FRONTIER_MODE: on`)**
+
+If the setup brief has `FRONTIER_MODE: on`, invoke `simmer:pareto-frontier` as a subagent before reflect. Pass:
+
+```
+You are the pareto-frontier subskill in a simmer refinement loop.
+
+Invoke the skill: simmer:pareto-frontier
+
+ITERATION_N: [N]
+ARTIFACT_TYPE: [single-file | workspace]
+CANDIDATE: [path to iteration-N-candidate.md, or workspace directory path]
+JUDGMENT: [judge output from Step 3, passed inline — scores per criterion, per-criterion evidence, ASI]
+FRONTIER_PATH: {OUTPUT_DIR}/frontier.json
+DROPPED_PATH: {OUTPUT_DIR}/dropped.json
+CRITERIA: [ordered list of criterion names from setup]
+FRONTIER_CONTEXT_PATH: {OUTPUT_DIR}/iteration-[N]-frontier-context.md
+```
+
+The judge output is passed inline rather than from a judgment file because simmer-judge currently emits its output as subagent return text, not a written artifact. The frontier subskill stores `judgment_path: null` in the frontier entry when judgment is inline.
+
+Skip this step entirely when `FRONTIER_MODE: off` (or absent). Reflect handles its presence/absence via a file-existence check, so omission is safe.
+
 **Step 4: Reflect (inline, load subskill)**
 
 Invoke `simmer:simmer-reflect`.
 
-Provide: full score history across all iterations so far, current iteration number, max iterations, judge output from this round.
+Provide: full score history across all iterations so far, current iteration number, max iterations, judge output from this round. If `FRONTIER_MODE: on`, also pass `FRONTIER_CONTEXT_PATH: {OUTPUT_DIR}/iteration-[N]-frontier-context.md` — reflect reads it if present.
 
 **After reflect completes, display the updated trajectory table to the user.** Show the full table so far — the user should see scores accumulate row by row as the loop runs. This is especially important during long evaluator runs where the user otherwise sees nothing for 10-15 minutes per iteration.
 
@@ -426,12 +451,14 @@ If you cannot dispatch separate subagents (e.g., nested Claude sessions are bloc
 | Judge (text/creative) | Current candidate, criteria, iteration number, seed + seed scores | Intermediate scores, intermediate candidates, previous ASI, trajectory |
 | Judge (code/pipeline) | Current candidate, criteria, iteration number, seed + seed scores, evaluator output, previous ASI, iteration history, search space, exploration status | Full candidate history |
 | Judge Board | Same as single judge per problem class, plus: other panelists' scores during deliberation | Other panelists' ASI candidates (withheld until synthesis) |
-| Reflect | Full score history, all iteration summaries, search space | Candidate content (just scores + summaries) |
+| Reflect | Full score history, all iteration summaries, search space, optional frontier-context note | Candidate content (just scores + summaries) |
+| Pareto Frontier (opt-in) | Current candidate, judge output for this round, prior frontier state, prior dropped log | Generator's report, full score history |
 
 The generator improves based on specific feedback (ASI) and available resources (background), not scores.
 The judge scores against criteria definitions, evaluator output, and the seed as a fixed calibration reference — no intermediate scores.
 The judge board preserves these same rules per panelist — deliberation adds within-iteration cross-judge visibility only, no new cross-iteration information.
 The reflect subskill is the only one that sees the full trajectory.
+The pareto-frontier subskill (when opted in) sees per-iteration state but not the full trajectory — it operates on snapshots, not history.
 
 ## Skill Dependencies
 
@@ -476,6 +503,10 @@ The reflect subskill is the only one that sees the full trajectory.
 **Reverting trajectory on git rollback (workspace mode)**
 - Problem: `git checkout <commit>` reverts ALL files including trajectory.md tracking
 - Fix: Always use selective checkout: `git checkout <commit> -- file1 file2`. Keep trajectory.md and other tracking files outside the rollback scope.
+
+**Enabling FRONTIER_MODE on aligned-criteria tasks**
+- Problem: For tasks where criteria all want to go up together (most prompt refinement, creative writing, pitch emails), the frontier collapses to a single dominant candidate every round and produces no signal — just overhead.
+- Fix: Only enable `FRONTIER_MODE: on` when criteria genuinely trade off (architecture specs, schema design, DSL definitions, anything where two valid candidates can make incompatible choices). Default off.
 
 ## Example Flow: Single-File (v1 behavior)
 

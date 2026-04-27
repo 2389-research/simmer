@@ -18,6 +18,7 @@ You are the only subskill that sees the full score history. Your job: record the
 - **Latest judge output**: scores + ASI for this round
 - **Generator report**: what changed this round (2-3 sentences)
 - **Artifact type**: single-file or workspace
+- **Frontier context path** (optional): `iteration-N-frontier-context.md` if `FRONTIER_MODE: on`. Read it if the file exists; proceed without it if it doesn't. The frontier context provides cross-iteration patterns and specific transferable techniques from prior candidates that excelled at criteria where the current candidate underperformed. Incorporate its observations into your strategy notes — particularly its "Relevance to this iteration" section. Do not change your output schema; the frontier context is reference material, not a new output.
 
 ## What To Do
 

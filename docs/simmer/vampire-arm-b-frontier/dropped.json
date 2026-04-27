@@ -1,0 +1,28 @@
+{
+  "entries": [
+    {
+      "id": "iter-1",
+      "candidate_path": "/Users/michaelsugimura/Documents/GitHub/simmer/docs/simmer/vampire-arm-b-frontier/iteration-1-candidate.md",
+      "scores": {
+        "atmospheric_density": 8,
+        "dm_runnable_clarity": 7,
+        "player_agency": 9
+      },
+      "dominated_by": ["iter-2"],
+      "failure_summary": "MM-page-only stat refs and unseeded servant tunnels forced mid-combat page-flipping.",
+      "dropped_at_iteration": 2
+    },
+    {
+      "id": "iter-2",
+      "candidate_path": "/Users/michaelsugimura/Documents/GitHub/simmer/docs/simmer/vampire-arm-b-frontier/iteration-2-candidate.md",
+      "scores": {
+        "atmospheric_density": 9,
+        "dm_runnable_clarity": 9,
+        "player_agency": 9
+      },
+      "dominated_by": ["iter-3"],
+      "failure_summary": "Veska stat block stayed at the back and awareness track left turns-vs-rounds undecided.",
+      "dropped_at_iteration": 3
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "criteria": ["backwards_compat", "extensibility", "terseness"],
+  "members": [
+    {
+      "id": "iter-3",
+      "candidate_path": "/Users/michaelsugimura/Documents/GitHub/simmer/tests/fixtures/pareto-frontier/iteration-3-candidate.md",
+      "judgment_path": "/Users/michaelsugimura/Documents/GitHub/simmer/tests/fixtures/pareto-frontier/iteration-3-judgment.md",
+      "scores": {"backwards_compat": 5, "extensibility": 9, "terseness": 4},
+      "best_at": ["extensibility"],
+      "key_passages": [
+        {
+          "criterion": "extensibility",
+          "excerpt": "- **`metadata`** — arbitrary user-controlled key/value pairs on every Note. Servers preserve unknown keys round-trip. Reserved namespace `_*` for server-set keys.\n- **`extensions`** — namespaced plugin payloads. Each registered plugin owns a top-level key (e.g., `extensions.sharing`, `extensions.tags`, `extensions.encryption`). Plugins register schemas separately at `/v1/plugins/{name}/schema`.",
+          "judge_evidence": "The `extensions.{name}` namespace pattern is the strongest move — it lets multiple plugins coexist without naming collisions and makes plugin presence trivially detectable by clients."
+        }
+      ],
+      "weaknesses": [
+        {
+          "criterion": "terseness",
+          "judge_evidence": "Surface area roughly tripled. Six new concepts (envelope, metadata, extensions, hooks, vendor MIME, field selection) before a reader gets to the resource itself. Plugin schema registration at `/v1/plugins/{name}/schema` adds a whole second resource family. Reads more like a framework than an API."
+        }
+      ],
+      "added_at_iteration": 3
+    },
+    {
+      "id": "iter-4",
+      "candidate_path": "/Users/michaelsugimura/Documents/GitHub/simmer/tests/fixtures/pareto-frontier/iteration-4-candidate.md",
+      "judgment_path": "/Users/michaelsugimura/Documents/GitHub/simmer/tests/fixtures/pareto-frontier/iteration-4-judgment.md",
+      "scores": {"backwards_compat": 8, "extensibility": 6, "terseness": 9},
+      "best_at": ["backwards_compat", "terseness"],
+      "key_passages": [
+        {
+          "criterion": "backwards_compat",
+          "excerpt": "Bearer token in `Authorization` header. Token issued by existing `/v1/auth/login` endpoint (unchanged).\n\n### Errors\nStandard HTTP status codes. Error body: `{error: {code, message}}` (unchanged from v1).\n\n### Versioning\nPath prefix (`/v1/`). Additive changes (new fields under `metadata`, new optional body fields) are non-breaking. Breaking changes ship at `/v2/`.",
+          "judge_evidence": "Reuses `/v1/auth/login` unchanged — good. Error envelope is identical to iter-1 — no client-parsing breakage. PATCH semantics now explicit (JSON Merge Patch) which removes ambiguity without changing wire shape. Adding optional `metadata` field is a non-breaking additive change. The non-breaking-additions clause at the bottom of versioning is a nice explicit commitment."
+        },
+        {
+          "criterion": "terseness",
+          "excerpt": "- `GET /v1/notes` — list notes for the authenticated user\n- `GET /v1/notes/{id}` — fetch one note\n- `POST /v1/notes` — create. Body: `{title, body, metadata: {}}`\n- `PATCH /v1/notes/{id}` — update via JSON Merge Patch (RFC 7396)\n- `DELETE /v1/notes/{id}` — delete",
+          "judge_evidence": "Five endpoints, one resource. One paragraph for the extension point, two lines for auth, one line for errors. Reads in 30 seconds. Slightly tighter than iter-1 because the explicit JSON Merge Patch reference removes a reader's need to ask 'which patch flavor?'."
+        }
+      ],
+      "weaknesses": [
+        {
+          "criterion": "extensibility",
+          "judge_evidence": "The `metadata` open object is exactly the right minimal extension point — future additive features can land there without a v2 cut. Up from iter-1's score of 5 because there's now a place for additions to go. Not as high as iter-3 because there's no plugin namespacing pattern (`extensions.{name}` from iter-3 was the strongest single move and it's not present here) and no event/webhook surface."
+        }
+      ],
+      "added_at_iteration": 4
+    }
+  ]
+}

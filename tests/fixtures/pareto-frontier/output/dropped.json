@@ -1,0 +1,20 @@
+{
+  "entries": [
+    {
+      "id": "iter-2",
+      "candidate_path": "/Users/michaelsugimura/Documents/GitHub/simmer/tests/fixtures/pareto-frontier/iteration-2-candidate.md",
+      "scores": {"backwards_compat": 3, "extensibility": 4, "terseness": 6},
+      "dominated_by": ["iter-1"],
+      "failure_summary": "Forced token reauth and renamed error envelope, breaking every existing client.",
+      "dropped_at_iteration": 2
+    },
+    {
+      "id": "iter-1",
+      "candidate_path": "/Users/michaelsugimura/Documents/GitHub/simmer/tests/fixtures/pareto-frontier/iteration-1-candidate.md",
+      "scores": {"backwards_compat": 7, "extensibility": 5, "terseness": 8},
+      "dominated_by": ["iter-4"],
+      "failure_summary": "Closed `{title, body}` body with no extension point — first new feature would force a v2 cut.",
+      "dropped_at_iteration": 4
+    }
+  ]
+}

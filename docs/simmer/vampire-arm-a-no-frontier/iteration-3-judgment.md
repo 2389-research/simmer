@@ -1,0 +1,22 @@
+# Iteration 3 Judgment
+
+## Scores
+- atmospheric_density: 9
+- dm_runnable_clarity: 8
+- player_agency: 8
+
+Composite: 8.3/10
+
+## Per-criterion evidence
+
+### atmospheric_density (9)
+This iteration delivers exactly the systemic upgrade iteration 2 was missing — the dense, image-forward sensory anchoring is now distributed across nearly every room rather than peaking in two passages. The Foyer now has the "single fused stalactite of grey wax" with a drip that "is dry, soundless, the wax already cold" and the closet-since-a-funeral smell — that's a signature image where the seed had wet ash and a crooked chandelier. The Kitchen's "toes turn slowly, all in the same direction, as though a wind moved through the room that no one can feel" plus the cherry-preserves-boiled-too-long note transforms a serviceable horror tableau into something specific and unrepeatable. The Chapel — the load-bearing room iteration 2's ASI flagged — now has the pyre someone "lost the nerve to light," wax dripped slow into the icon's eye-sockets and offering hand, and the rose window's "real sunlight... the dust in those bars moves the way dust should move. Nothing else in this house does," which is the strongest single sentence in the module. The Wine Cellar's upside-down lantern reflection, the bitten cask, the wine sitting on the water as "a slow, unbroken skin" being sipped at by invisible mouths is a 9-grade horror image where the seed had vinegar-and-copper. Held back from a 10 only because the climax/Master Bedroom passage carries over essentially unchanged from iteration 2 (still excellent) and Area 1's gatehouse, while improved, is the slightest of the rewrites.
+
+### dm_runnable_clarity (8)
+The runnability architecture is preserved intact and the Tess stat block remains inlined at Area 7 with surrender clause and tactics adjacent — that's the iteration-2 win held. The denser boxed text adds reading time but does not introduce ambiguity: every prop, DC, and trigger from prior iterations is still pre-set (Investigation 12 for the bed-skirt, Strength 13 for shutters, Religion 13 for reconsecration, the bat-swarm Perception 14). The Master Bedroom climax now explicitly notes that all the props "live in the boxed text above," which is a small but real scan-and-find improvement — a DM reading the read-aloud is also reading the prop list. Same minor friction as iteration 2: Tess's stat block sits mid-document while Corwin's lives at the climax, so the two vampire blocks are physically separated; and the encounter summary table still says "see below" for Corwin. Net unchanged from the seed's 8 — the prose pass did not erode clarity.
+
+### player_agency (8)
+Structural agency is unchanged from seed and iteration 2 — three approach routes that reorder encounter triggers, the noise-based Area 6 → Area 7 relocation, three documented solutions with distinct mechanical scaffolding, layered info-gating across rumor table / Hollis / journal / Iselda / chapel exploration, and the Tess surrender shortcut. The denser boxed text in the Chapel and Wine Cellar incidentally strengthens agency by making the levers more legible — the reconsecration's stakes are now emotionally clear ("Nothing else in this house does"), and the bitten cask plus wine-on-water foreshadows Tess's nature before mechanics engage. No new branches added, no existing branches eroded. The same mild dominant-path bias toward daylight stake-in-coffin persists; the module still prices it correctly.
+
+## ASI for next round
+The highest-leverage remaining move is **resolving the Corwin/Tess stat-block fragmentation and tightening the encounter summary into a true at-a-glance spine**, which is the only structural friction left after this iteration's prose ascendancy. Concretely: print Tess and Corwin's stat blocks back-to-back in a single "Antagonist Statistics" appendix at the end of the module while keeping a compact reference card (HP, AC, key abilities, regeneration trigger, surrender clause) inlined at Area 7 and Area 6 respectively — DMs get fast lookup at point of use without losing the consolidated reference. Update the encounter summary table to replace "see below" with concrete CRs and a one-phrase tactical note per row. While in there, add a one-page "DM dashboard" up front: time-of-day rules, the chapel/sunlight/coffin lever ecosystem in three bullets, and the noise-relocation rule. Do not touch the boxed text — every room is now load-bearing prose. This is a structural pass to convert a strong document into a genuinely run-it-cold module.

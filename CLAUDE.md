@@ -18,6 +18,7 @@ Simmer is an iterative refinement skill. It takes any artifact — a single file
 | `simmer:simmer-generator` | Produce improved candidate from current + ASI feedback + background context |
 | `simmer:simmer-judge` | Score candidate 1-10 per criterion (with optional evaluator output), produce ASI |
 | `simmer:simmer-judge-board` | Multi-judge panel with deliberation — drop-in replacement for simmer-judge when JUDGE_MODE is board |
+| `simmer:pareto-frontier` | Optional. Maintains a Pareto frontier of non-dominated candidates and writes a frontier-context note for reflect. Opt-in via `FRONTIER_MODE: on`. For trade-off-y criteria (architecture, schema, DSL design) where specialists matter. |
 | `simmer:simmer-reflect` | Record trajectory, track best-so-far, pass ASI forward |
 
 ## Flow
@@ -48,6 +49,8 @@ Output best candidate + trajectory
 **Regression handling:** Reflect tracks best-so-far. If an iteration regresses, next generator receives the best candidate, not the regressed one. In workspace mode, this means git checkout to the best iteration's commit.
 
 **Judge board:** For complex artifacts, the board constructs problem-specific judges that investigate before scoring — reading the evaluator script, ground truth, prior candidates, and config to understand the problem before proposing improvements. Judges are composed once per run, tailored to the specific problem, then reuse for all iterations with updated context. Tracks stable wins (WORKING/NOT WORKING) across iterations to prevent undoing proven improvements.
+
+**Pareto frontier (opt-in via `FRONTIER_MODE: on`):** Linear simmer carries forward only the most recent candidate, which loses information when criteria genuinely trade off. The frontier subskill maintains a set of non-dominated candidates across iterations — a candidate that wins big on one dimension stays in the pool even if its average is lower than another member's. Each round, the subskill emits a frontier-context note that names a specific transferable technique drawn from the relevant specialist's operative passage, plus a dropped-candidate failure log to prevent re-proposing dead ends. Reflect reads the context note when present (file-existence check) and incorporates it into strategy. Dominated candidates are logged with one-line failure summaries. Off by default — adds overhead without benefit on aligned-criteria tasks (most prompt/creative work).
 
 
 ## Artifact Modes
@@ -88,6 +91,8 @@ simmer/
       SKILL.md                  # Score + produce ASI (with optional evaluator output)
     simmer-reflect/
       SKILL.md                  # Record trajectory + track best
+    pareto-frontier/
+      SKILL.md                  # Optional: cross-iteration Pareto frontier (opt-in)
   docs/
     specs/
       2026-03-16-simmer-v2-design.md
@@ -109,6 +114,11 @@ simmer/
   iteration-3-candidate.md
   trajectory.md                 # Running score table
   result.md                     # Final best output
+
+  # When FRONTIER_MODE: on (additional files):
+  frontier.json                 # Active non-dominated candidates
+  dropped.json                  # Failure memory
+  iteration-N-frontier-context.md  # Per-iteration context for reflect
 ```
 
 **Workspace mode:**
@@ -118,4 +128,9 @@ simmer/
 
 {OUTPUT_DIR}/
   trajectory.md                 # Running score table
+
+  # When FRONTIER_MODE: on (additional files):
+  frontier.json                 # Active non-dominated candidates (refers to git commits)
+  dropped.json                  # Failure memory
+  iteration-N-frontier-context.md  # Per-iteration context for reflect
 ```
