@@ -191,7 +191,7 @@ Part of the test-kitchen family, but independently installable:
 ## Documentation
 
 - [CLAUDE.md](./CLAUDE.md) — full plugin instructions
-- [Simmer skill](./skills/SKILL.md) — orchestrator
+- [Simmer skill](./skills/simmer/SKILL.md) — orchestrator
 - [v2 Design](./docs/specs/2026-03-16-simmer-v2-design.md) — design spec
 - [Integration tests](./tests/integration/simmer-scenario.md) — test scenarios
 

@@ -79,13 +79,16 @@ simmer/
   .claude-plugin/
     plugin.json
   skills/
-    SKILL.md                    # Orchestrator
+    simmer/
+      SKILL.md                  # Orchestrator
     simmer-setup/
       SKILL.md                  # Identify artifact + elicit criteria + evaluation method
     simmer-generator/
       SKILL.md                  # Produce improved candidate
     simmer-judge/
       SKILL.md                  # Score + produce ASI (with optional evaluator output)
+    simmer-judge-board/
+      SKILL.md                  # Multi-judge panel with deliberation
     simmer-reflect/
       SKILL.md                  # Record trajectory + track best
   docs/
