@@ -1,10 +1,9 @@
 ---
 name: simmer-reflect
 description: >
-  Reflect subskill for simmer. Records iteration results in trajectory table,
-  tracks best candidate, handles regression rollback, and passes ASI forward
-  to the next round. Supports both single-file and workspace modes. Do not
-  invoke directly — called by simmer orchestrator after each judge round.
+  Do not invoke directly — called by the simmer orchestrator after each judge round. Records
+  iteration scores in the trajectory table, tracks the best candidate across regressions, and
+  passes the ASI forward to the next generator.
 ---
 
 # Simmer Reflect

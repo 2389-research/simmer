@@ -1,11 +1,9 @@
 ---
 name: simmer-setup
 description: >
-  Setup subskill for simmer. Inspects the artifact or workspace, infers evaluation
-  contracts and search space, proposes a complete assessment to the user, and produces
-  a setup brief after confirmation. Conversational, not form-based — the agent does
-  the work of understanding the problem, then presents what it found. Do not invoke
-  directly — called by simmer orchestrator.
+  Do not invoke directly — called by the simmer orchestrator. Inspects the artifact or workspace,
+  infers evaluation contracts and search space, proposes an assessment for user confirmation, and
+  emits the setup brief that drives the entire refinement loop.
 ---
 
 # Simmer Setup
@@ -235,6 +233,7 @@ OUTPUT_CONTRACT: [valid output format description — omit for text/creative]
 VALIDATION_COMMAND: [quick check command — omit if no cheap validation exists]
 SEARCH_SPACE: [what's in scope to explore — omit if unconstrained]
 JUDGE_MODE: [single | board — auto-select, see below]
+JUDGE_PANEL: [optional custom judge definitions — omit to use defaults for problem class]
 ITERATIONS: [N]
 MODE: [seedless | from-file | from-paste | from-workspace]
 OUTPUT_DIR: [path, default: docs/simmer]
