@@ -1,11 +1,9 @@
 ---
 name: simmer-judge
 description: >
-  Judge subskill for simmer. Scores a candidate artifact against user-defined
-  criteria on a 1-10 scale and produces ASI (highest-leverage direction) for
-  the next generator round. Supports judge-only, runnable evaluator, and hybrid
-  evaluation modes. Do not invoke directly — dispatched as a subagent by the
-  simmer orchestrator.
+  Not invoked from user context — dispatched by the simmer orchestrator and simmer-judge-board
+  panelists. Scores a candidate artifact against user-defined criteria on a 1-10 scale and produces
+  an ASI (highest-leverage direction) for the next generator round.
 ---
 
 # Simmer Judge
