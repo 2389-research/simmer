@@ -1,10 +1,9 @@
 ---
 name: simmer-generator
 description: >
-  Generator subskill for simmer. Produces an improved version of the artifact
-  based on the judge's ASI feedback. Handles both single-file and workspace
-  targets. Do not invoke directly — dispatched as a subagent by the simmer
-  orchestrator.
+  Do not invoke directly — dispatched as a subagent by the simmer orchestrator. Produces an
+  improved artifact version by executing the judge's ASI (highest-leverage direction), targeting
+  single-file edits or coordinated multi-file workspace changes.
 ---
 
 # Simmer Generator

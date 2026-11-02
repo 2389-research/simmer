@@ -1,14 +1,9 @@
 ---
 name: simmer
 description: >
-  Use when user says "simmer this", "refine this", "hone this", "iterate on this",
-  or asks to improve a specific artifact over multiple rounds. Runs an iterative
-  refinement loop with investigation-first judges that read the code, understand
-  the problem, and propose evidence-based improvements. Auto-selects single judge
-  or multi-judge board based on complexity. Works on any artifact type: documents,
-  prompts, specs, emails, creative writing, API designs, pipelines, codebases.
-  Supports multi-file workspace targets, runnable evaluators, and open-ended
-  optimization (model selection, pipeline topology, prompt tuning).
+  Refines any artifact through scored iterations using an investigation-first judge board. Use when
+  the user says "simmer this", "refine this", "hone this", or wants to improve a document, prompt,
+  email, design, spec, or pipeline through multiple rounds of criteria-driven feedback.
 ---
 
 # Simmer
